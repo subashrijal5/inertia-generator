@@ -1,0 +1,37 @@
+[
+    {
+        "column_name": "title",
+        "data_type": "string",
+        "input_type": "text",
+        "rules": "required",
+        "label": "Name",
+        "searchable": true,
+        "in_datatable": true
+    },
+    {
+        "column_name": "meta_title",
+        "data_type": "string",
+        "input_type": "text",
+        "rules": "nullable",
+        "label": "Name",
+        "searchable": true,
+        "in_datatable": true
+    },
+    {
+        "column_name": "meta_description",
+        "data_type": "string",
+        "input_type": "text",
+        "rules": "nullable",
+        "label": "Name",
+        "searchable": true,
+        "in_datatable": true
+    },
+    {
+        "column_name": "description",
+        "data_type": "longtext",
+        "input_type": "textarea",
+        "rules": "required",
+        "label": "Description",
+        "in_datatable": true
+    }
+]

@@ -1,0 +1,51 @@
+[
+    {
+        "column_name": "title",
+        "data_type": "string",
+        "input_type": "text",
+        "rules": "required",
+        "label": "Name",
+        "searchable": true,
+        "in_datatable": true
+    },
+    {
+        "column_name": "author_id",
+        "data_type": "foreignId",
+        "input_type": "text",
+        "rules": "nullable",
+        "label": "Author",
+        "in_datatable": true
+    },
+    {
+        "column_name": "summery",
+        "data_type": "text",
+        "input_type": "textarea",
+        "rules": "nullable",
+        "label": "Summery",
+        "in_datatable": true
+    },
+    {
+        "column_name": "source",
+        "data_type": "string",
+        "input_type": "text",
+        "rules": "nullable",
+        "label": "Summery",
+        "in_datatable": true
+    },
+    {
+        "column_name": "description",
+        "data_type": "longtext",
+        "input_type": "textarea",
+        "rules": "required",
+        "label": "Description",
+        "in_datatable": true
+    },
+    {
+        "column_name": "published_at",
+        "data_type": "datetime",
+        "input_type": "date",
+        "rules": "required",
+        "label": "Published Date",
+        "in_datatable": true
+    }
+]

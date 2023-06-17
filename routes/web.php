@@ -39,4 +39,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('tests',App\Http\Controllers\TestController::class);
+Route::resource('tests',App\Http\Controllers\TestController::class);Route::resource('languages',App\Http\Controllers\LanguageController::class);Route::resource('categories',App\Http\Controllers\CategoryController::class);Route::resource('postcategories',App\Http\Controllers\PostCategoryController::class);Route::resource('tags',App\Http\Controllers\TagController::class);Route::resource('posts',App\Http\Controllers\PostController::class);

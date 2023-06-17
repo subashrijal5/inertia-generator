@@ -1,0 +1,19 @@
+[
+    {
+        "column_name": "name",
+        "data_type": "string",
+        "input_type": "text",
+        "rules": "required",
+        "label": "Name",
+        "searchable": true,
+        "in_datatable": true
+    },
+    {
+        "column_name": "short_code",
+        "data_type": "string",
+        "input_type": "text",
+        "rules": "required",
+        "label": "Short Code",
+        "in_datatable": true
+    }
+]

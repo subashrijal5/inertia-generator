@@ -1,17 +1,1 @@
-[
-    {
-        "label": "Dashboard",
-        "route": "dashboard",
-        "icon_name": "Dashboard"
-    },
-    {
-        "label": "Profile Edit",
-        "route": "profile.edit",
-        "icon_name": "default"
-    },
-    {
-        "label": "My Stub Test",
-        "route": "stubtest.index",
-        "icon_name": "default"
-    }
-]
+[{"label":"Dashboard","route":"dashboard","icon_name":"Dashboard"},{"label":"Profile Edit","route":"profile.edit","icon_name":"default"},{"label":"My Stub Test","route":"stubtest.index","icon_name":"default"},{"label":"Language","route":"languages.index","icon_name":"default"},{"label":"Postcategory","route":"postcategories.index","icon_name":"default"},{"label":"Tag","route":"tags.index","icon_name":"default"},{"label":"Post","route":"posts.index","icon_name":"default"}]
