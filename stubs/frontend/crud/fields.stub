@@ -6,7 +6,7 @@ import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Checkbox from "@/Components/Checkbox";
 $import_statements$
-const $component_name$Field = ({ auth, pagedata = {} , toastData}) => {
+const $component_name$Field = ({ auth, pagedata = $fields_state$ , toastData}) => {
     const {
         data,
         setData,
@@ -15,7 +15,7 @@ const $component_name$Field = ({ auth, pagedata = {} , toastData}) => {
         errors,
         post,
         patch,
-    } = useForm($fields_state$);
+    } = useForm(pagedata);
 
 
     const onHandleChange = (event, name = null) => {
