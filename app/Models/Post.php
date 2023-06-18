@@ -3,16 +3,27 @@
 namespace App\Models;
 
 use App\Traits\SearchableTrait;
+use App\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasFactory, SearchableTrait;
+    use HasFactory, SearchableTrait, Sluggable;
+    protected function getSlugColumnName()
+    {
+        return 'title';
+    }
 
-    protected $fillable =  ["title","author_id","summery","source","description","published_at"];
 
-    public static $rules = ['title' => 'required' ,'author_id' => 'nullable' ,'summery' => 'nullable' ,'source' => 'nullable' ,'description' => 'required' ,'published_at' => 'required'];
+    protected $fillable =  ["title", "author_id", "summery", "source", "source_url", "description", "published_at"];
+
+    public static $rules = ['title' => 'required', 'author_id' => 'nullable', 'summery' => 'nullable', 'source' => 'nullable', 'description' => 'required', 'published_at' => 'required'];
 
     protected $searchable = ["title"];
+
+    public function categories()
+    {
+        return $this->belongsToMany(PostCategory::class, 'category_post', 'post_id', 'category_id');
+    }
 }
