@@ -3,16 +3,21 @@
 namespace App\Models;
 
 use App\Traits\SearchableTrait;
+use App\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PostCategory extends Model
 {
-    use HasFactory, SearchableTrait;
+    protected $table = "post_categories";
+    use HasFactory, SearchableTrait, Sluggable;
+    protected function getSlugColumnName()
+    {
+        return 'title';
+    }
 
-    protected $fillable =  ["title","meta_title","meta_description","description"];
+    protected $fillable =  ["title", "slug","meta_title", "meta_description", "description"];
+    public static $rules = ['title' => 'required', 'meta_title' => 'nullable', 'meta_description' => 'nullable', 'description' => 'required'];
 
-    public static $rules = ['title' => 'required' ,'meta_title' => 'nullable' ,'meta_description' => 'nullable' ,'description' => 'required'];
-
-    protected $searchable = ["title","meta_title","meta_description"];
+    protected $searchable = ["title", "meta_title", "meta_description"];
 }
