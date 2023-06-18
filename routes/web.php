@@ -35,8 +35,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('stubtest', MyStubTestController::class);
+    Route::resource('tests', App\Http\Controllers\TestController::class);
+    Route::resource('languages', App\Http\Controllers\LanguageController::class);
+    Route::resource('categories', App\Http\Controllers\CategoryController::class);
+    Route::resource('postcategories', App\Http\Controllers\PostCategoryController::class);
+    Route::resource('tags', App\Http\Controllers\TagController::class);
+    Route::resource('posts', App\Http\Controllers\PostController::class);
 });
 
-require __DIR__.'/auth.php';
-
-Route::resource('tests',App\Http\Controllers\TestController::class);Route::resource('languages',App\Http\Controllers\LanguageController::class);Route::resource('categories',App\Http\Controllers\CategoryController::class);Route::resource('postcategories',App\Http\Controllers\PostCategoryController::class);Route::resource('tags',App\Http\Controllers\TagController::class);Route::resource('posts',App\Http\Controllers\PostController::class);
+require __DIR__ . '/auth.php';

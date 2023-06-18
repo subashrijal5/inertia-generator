@@ -38,7 +38,7 @@ const Sidebar = ({ isNavbarOpen, setIsNavbarOpen }) => {
             {isNavbarOpen && (
                 <div
                     onClick={() => setIsNavbarOpen(false)}
-                    className="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
+                    className="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 dark:bg-white dark:bg-opacity-50 sm:items-center sm:justify-center"
                 ></div>
             )}
         </>

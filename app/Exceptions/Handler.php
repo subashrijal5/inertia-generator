@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,7 +45,30 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
-        });
+            $this->logError($this->getLogData($e));
+        })->stop();
+
+    }
+
+    private function getLogData($e)
+    {
+        $logData = [
+            'url' => request()->url(),
+            'method' => request()->method(),
+            'header' => request()->header(),
+            'body' => request()->all(),
+            'line' => $e->getLine(),
+            'file' => $e->getFile(),
+            'code' => $e->getCode() ?? 500,
+            'message' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ];
+        return $logData;
+    }
+
+    private function logError($logData)
+    {
+        unset($logData['trace']);
+        Log::error($logData['message'] ?? "Error", $logData);
     }
 }

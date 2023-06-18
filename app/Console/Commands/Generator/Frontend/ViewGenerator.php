@@ -147,7 +147,7 @@ class ViewGenerator extends BaseGenerator
         $intDataTypes = ['integer', 'decimal', 'biginteger', 'unsignedBigInteger', 'tinyinteger'];
         $returnData = [];
         foreach ($fieldsArr as $key => $value) {
-          $returnData[$value['column_name']] = in_array($value['data_type'], $intDataTypes) ? 0 : null;
+          $returnData[$value['column_name']] = in_array($value['data_type'], $intDataTypes) ? 0 : "";
         }
         $returnData['create_another'] = false;
         return json_encode($returnData);

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Traits;
+namespace App\Http\Controllers;
 
-trait ResponseTrait
+use Illuminate\Http\Request;
+
+class ApiBaseController extends Controller
 {
-    protected function dataResponse($code, $data = null)
+    protected function dataResponse($data = null, $code=200)
     {
         return response()->json($data, $code);
     }
@@ -20,7 +22,7 @@ trait ResponseTrait
         return response()->json($body, $code);
     }
 
-    protected function errorResponse($code, $message, $error = null)
+    protected function errorResponse($message,$code=500, $error = null)
     {
         $body = [
             'message' => $message

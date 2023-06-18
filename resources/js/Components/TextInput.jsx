@@ -12,6 +12,7 @@ export default forwardRef(function TextInput(
         required,
         isFocused,
         handleChange,
+        placeholder="Type here"
     },
     ref
 ) {
@@ -50,6 +51,7 @@ export default forwardRef(function TextInput(
                 autoComplete={autoComplete}
                 required={required}
                 onChange={(e) => handleChange(e)}
+                placeholder={placeholder}
             />
         </div>
     );

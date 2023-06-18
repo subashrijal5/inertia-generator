@@ -52,7 +52,7 @@ const MyStubTestField = ({ auth, pagedata = {}, toastData }) => {
                 </div>
                 <div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                     <form onSubmit={handleSubmit}>
-                        <div className="flex flex-col md:flex-row  md:gap-4">
+                        <div className="flex flex-col   md:gap-4">
                             <div className="mt-4">
                                 <InputLabel forInput="name" value="Name" />
 
