@@ -200,7 +200,7 @@ const Datatable = ({
             <div className="col-auto">
                 <div className="grid grid-cols-6 gap-4 ">
                     <div className="col-span-12 md:col-end-7 md:col-span-2 ">
-                        <TextInput onChange={handleFilter} />
+                        <TextInput handleChange={handleFilter} />
                     </div>
                 </div>
             </div>

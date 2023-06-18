@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class PostController extends WebBaseController
 {
-    public function __construct(private PostService $service){
-
+    public function __construct(private PostService $service)
+    {
     }
 
     /**
@@ -19,9 +19,8 @@ class PostController extends WebBaseController
      */
     public function index()
     {
-        $posts = $this->service->paginate(request('per_page', 20), request('keywords', ''),  ["*"], 'page', null);
+        $posts = $this->service->with('categories', 'author', 'language')->paginate(request('per_page', 20), request('keywords', ''),  ["*"], 'page', null);
         return $this->renderPage('Post/Index', ['data' => $posts]);
-
     }
 
     /**
@@ -42,11 +41,11 @@ class PostController extends WebBaseController
      */
     public function store(PostRequest $request)
     {
-      $post =  $this->service->create($request->validated());
+        $post =  $this->service->create($request->validated());
         if ($request->create_another) {
-            return back()->with('alert', ['message'=> 'post Created.' ]);
+            return back()->with('alert', ['message' => 'post Created.']);
         }
-      return \redirect()->route('posts.index')->with('alert', ['message'=> 'post Created.' ]);
+        return \redirect()->route('posts.index')->with('alert', ['message' => 'post Created.']);
     }
 
     /**
@@ -57,9 +56,9 @@ class PostController extends WebBaseController
      */
     public function show($id)
     {
-      $post =  $this->service->getById($id);
-      \abort_if(empty($post), 404, 'post not found');
-      return $this->renderPage('Post/Show', ['data' => $post]);
+        $post =  $this->service->getById($id);
+        \abort_if(empty($post), 404, 'post not found');
+        return $this->renderPage('Post/Show', ['data' => $post]);
     }
 
     /**
@@ -87,7 +86,7 @@ class PostController extends WebBaseController
         $post =  $this->service->getById($id);
         \abort_if(empty($post), 404, 'post not found');
         $this->service->update($id, $request->validated());
-        return \redirect()->route('posts.index')->with('alert', ['message'=> 'post updated.' ]);
+        return \redirect()->route('posts.index')->with('alert', ['message' => 'post updated.']);
     }
 
     /**
@@ -98,7 +97,7 @@ class PostController extends WebBaseController
      */
     public function destroy($id)
     {
-      $this->service->deleteById($id);
-      return \redirect()->route('posts.index')->with('alert', ['message'=> 'post Deleted.' ]);
+        $this->service->deleteById($id);
+        return \redirect()->route('posts.index')->with('alert', ['message' => 'post Deleted.']);
     }
 }

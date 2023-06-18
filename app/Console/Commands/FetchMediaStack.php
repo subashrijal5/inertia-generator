@@ -51,7 +51,7 @@ class FetchMediaStack extends Command
             // $response  = Cache::remember("test", 1, function () use ($category) {
             $response =  Http::get('http://api.mediastack.com/v1/news', [
                 'access_key' => config('constants.mediastack_key'),
-                'categories' => Str::lower($category->title),
+                'categories' => $category->slug,
                 'date' => Carbon::now()->format('Y-m-d') . ',' . Carbon::now()->subDays(3)->format('Y-m-d'),
                 'limit' => 99,
                 'sort' => 'popularity',
@@ -83,7 +83,7 @@ class FetchMediaStack extends Command
                     "language" => $language->id,
                     "source_url" => $single['url'],
                     "published_at" => Carbon::parse($single['published_at']),
-                    "meta_title" => $single['title'],
+                    "meta_title" => Str::limit($single['title'], 70),
                     "meta_description" => $single['description'],
                     "author_id" => $author->id,
                 ]

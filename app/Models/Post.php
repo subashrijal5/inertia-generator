@@ -16,7 +16,7 @@ class Post extends Model
     }
 
 
-    protected $fillable =  ["title", "author_id", "summery", "source", "source_url", "description", "published_at"];
+    protected $fillable =  ["title", "author_id", "summery", "source", "source_url", "description", "published_at", "meta_title", "meta_description"];
 
     public static $rules = ['title' => 'required', 'author_id' => 'nullable', 'summery' => 'nullable', 'source' => 'nullable', 'description' => 'required', 'published_at' => 'required'];
 
@@ -25,5 +25,13 @@ class Post extends Model
     public function categories()
     {
         return $this->belongsToMany(PostCategory::class, 'category_post', 'post_id', 'category_id');
+    }
+
+    public function language() {
+        return $this->belongsTo(Language::class);
+    }
+
+    public function author() {
+        return $this->belongsTo(User::class, 'author_id');
     }
 }

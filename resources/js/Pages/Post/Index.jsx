@@ -6,7 +6,23 @@ import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 
 export default function Post(props) {
-    const columns = [{ field: "title", headerName: "Name" },{ field: "author_id", headerName: "Author" },{ field: "summery", headerName: "Summery" },{ field: "source", headerName: "Summery" },{ field: "description", headerName: "Description" },{ field: "published_at", headerName: "Published Date" },];
+    const columns = [
+        { field: "title", headerName: "Name" },
+        {
+            field: "author_id",
+            headerName: "Author",
+            computed: (row) => row.author.name,
+        },
+        {
+            field: "category_id",
+            headerName: "Category",
+            computed: (row) => row.categories.map((c) => c.title).join(", "),
+        },
+
+        { field: "source", headerName: "Summery" },
+        { field: "description", headerName: "Description" },
+        { field: "published_at", headerName: "Published Date" },
+    ];
 
     const handleCreate = (e) => {
         e.preventDefault();
